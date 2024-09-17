@@ -6,7 +6,8 @@ const appointment = new mongoose.Schema({
     description: String,
     ssn: String,
     date: Date,
-    time: String
+    time: String,
+    finished: Boolean
 });
 
 module.exports = appointment;
