@@ -42,6 +42,12 @@ app.get("/getappointments", async (req,res) => {
     res.status(200).json(appointments);
 })
 
+app.get("/appointment/:id", async (req,res) => {
+    let appointment = await AppointmentService.GetById(req.params.id);
+    console.log(appointment)
+    res.render('event',{appo: appointment});
+});
+
 app.listen(3000, () => {
   console.log("Server running on: http://localhost:3000");
 });
