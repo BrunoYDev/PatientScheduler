@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 let mongoose = require("mongoose");
 const appointmentService = require("./services/AppointmentService");
+const AppointmentService = require("./services/AppointmentService");
 
 app.set("view engine", "ejs"); // change view engine to ejs
 mongoose.connect("mongodb://localhost:27017/patients"); // Create mongoDB connection
@@ -34,6 +35,12 @@ app.post("/create", async (req, res) => {
     res.status(400).send("<h1>Error Occured!</h1>");
   }
 });
+
+app.get("/getappointments", async (req,res) => {
+    let appointments = await AppointmentService.GetAll(false);
+
+    res.status(200).json(appointments);
+})
 
 app.listen(3000, () => {
   console.log("Server running on: http://localhost:3000");
