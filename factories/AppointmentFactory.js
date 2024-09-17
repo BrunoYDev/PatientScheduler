@@ -10,7 +10,6 @@ class AppointmentFactory{
         let minutes = Number.parseInt(SimpleAppointment.time.split(":")[1]);
 
         let startDate = new Date(year,month,day,hour,minutes,0,0);
-        startDate.setHours( startDate.getHours() - 4 );
 
         let appo = {
             id: SimpleAppointment._id,
