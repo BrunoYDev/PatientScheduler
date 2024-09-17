@@ -44,9 +44,14 @@ app.get("/getappointments", async (req,res) => {
 
 app.get("/appointment/:id", async (req,res) => {
     let appointment = await AppointmentService.GetById(req.params.id);
-    console.log(appointment)
     res.render('event',{appo: appointment});
 });
+
+app.post("/finish", async (req,res) => {
+    let id = req.body.id;
+    let result = await AppointmentService.Finish(id);
+    res.redirect('/');
+})
 
 app.listen(3000, () => {
   console.log("Server running on: http://localhost:3000");

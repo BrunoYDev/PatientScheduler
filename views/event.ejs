@@ -13,7 +13,10 @@
     <h4>SSN: <%= appo.ssn %></h4>
     <hr>
     <% if (!appo.finished) { %>
-        <button>End Appointment</button>
+        <form method="post" action="/finish">
+            <input type="hidden" name="id" value="<%= appo._id %>">
+            <button>End Appointment</button>
+        </form>
     <% } %>
     <button onclick="returnDash()">Return Dashboard</button>
 </body>
