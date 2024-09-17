@@ -63,6 +63,17 @@ class AppointmentService {
             return false;
         }
     }
+
+    async Search(query){
+        try {
+            let appos = await Appo.find().or([{email: query},{ssn: query}]);
+            return appos;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+        
+    }
 };
 
 module.exports = new AppointmentService();

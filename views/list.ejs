@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Appointments</title>
+</head>
+<body>
+    <h2>Appointments: </h2>
+    <button onclick="returnDash()">Return Dashboard</button>
+    <hr>
+    <form method="get" action="/searchresult">
+        <input type="search" name="search" id="search" placeholder="Search by email or ssn">
+        <button>Search</button>
+    </form>
+    <hr>
+    <% appos.forEach(appo => { %>
+        <h1>Appointment: <%= appo.description %></h1>
+        <h4>Patient: <%= appo.name %></h4>
+        <h4>Email: <%= appo.email %></h4>
+        <h4>SSN: <%= appo.ssn %></h4>
+        <% if (appo.finished) { %>
+             <h4>Finished</h4>
+        <% }else{ %>
+            <h4>Not Finished</h4>
+        <% } %>
+        <hr>
+    <% }) %>
+</body>
+<script>
+    function returnDash(){
+        window.location.href = `/`;
+    }
+</script>
+</html>
