@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get("/", (req,res) => {
-    res.send("index");
+    res.render("index");
 });
 
 app.get("/register", (req, res) => {
