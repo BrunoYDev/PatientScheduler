@@ -68,6 +68,14 @@ app.get("/searchresult", async (req,res) => {
     }
 })
 
+let pollTime = 5000
+
+setInterval( async () => {
+    
+await AppointmentService.SendNotification();
+
+}, pollTime);
+
 app.listen(3000, () => {
   console.log("Server running on: http://localhost:3000");
 });
